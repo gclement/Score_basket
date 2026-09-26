@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Score Basket</string>
+    <string name="periods_won">Périodes gagnées</string>
+    <string name="team_a">Équipe A</string>
+    <string name="team_b">Équipe B</string>
+    <string name="period_label">Période</string>
+    <string name="score_period">Score de la période</string>
+    <string name="add_one">+1</string>
+    <string name="add_two">+2</string>
+    <string name="reset">Réinitialiser le match</string>
+</resources>

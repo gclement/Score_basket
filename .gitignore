@@ -1,0 +1,17 @@
+# Ignore Gradle project-specific cache directory
+.gradle/
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+.DS_Store
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Build output
+build/
+captures/
+
+# OS files
+Thumbs.db

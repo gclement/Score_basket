@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="team_a">#1565C0</color>
+    <color name="team_b">#C62828</color>
+    <color name="accent">#EF6C00</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="period_selected_bg">#1565C0</color>
+    <color name="period_selected_text">#FFFFFF</color>
+    <color name="period_default_bg">#E0E0E0</color>
+    <color name="period_default_text">#333333</color>
+</resources>
