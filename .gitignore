@@ -15,3 +15,8 @@ captures/
 
 # OS files
 Thumbs.db
+
+# Signing secrets
+keystore.properties
+*.jks
+*.keystore
