@@ -9,4 +9,13 @@
     <string name="add_one">+1</string>
     <string name="add_two">+2</string>
     <string name="reset">Réinitialiser le match</string>
+    <string name="save_match">Enregistrer le match</string>
+    <string name="match_saved">Match enregistré</string>
+    <string name="save_error">Erreur de sauvegarde</string>
+    <string name="club_name">SUD LYONNAIS BASKET</string>
+    <string name="wins_summary">Périodes gagnées : %s - %s</string>
+    <string name="saved_matches">Matchs enregistrés</string>
+    <string name="match_loaded">Match chargé</string>
+    <string name="no_match">Aucun match enregistré</string>
+    
 </resources>
