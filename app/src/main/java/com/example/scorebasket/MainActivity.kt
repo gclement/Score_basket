@@ -35,11 +35,8 @@ class MainActivity : AppCompatActivity() {
         val scoresB: IntArray)
 
     private val schedule = arrayOf(
-        ScheduledMatch(2026, 9, 19, "BC DES COTEAUX DU LYONNAIS - 2"),
-        ScheduledMatch(2026, 9, 26, "OULLINS STE FOY BASKET BALL - 3"),
-        ScheduledMatch(2026, 10, 3, "UNION SPORTIVE PIERRE BENITE - 2"),
-        ScheduledMatch(2026, 10, 10, "ASSOCIATION SPORTIVE GREZIEU - SOUCIEU BASKET - 2"),
-        ScheduledMatch(2026, 10, 17, "FRANCHEVILLE BASKET - 2")
+        ScheduledMatch(2026, 11, 14, "BASKET CLUB COMMUNAY TERNAY - 3"),
+        ScheduledMatch(2026, 11, 21, "SO GIVORS BASKET")
     )
 
     private val scoreA = IntArray(PERIODS)
@@ -66,6 +63,8 @@ class MainActivity : AppCompatActivity() {
         "UNION SPORTIVE PIERRE BENITE" to R.drawable.logo_union_sportive_pierre_benite,
         "ASSOCIATION SPORTIVE GREZIEU - SOUCIEU BASKET" to R.drawable.logo_association_sportive_grezieu_soucieu,
         "FRANCHEVILLE BASKET" to R.drawable.logo_francheville_basket,
+        "BASKET CLUB COMMUNAY TERNAY" to R.drawable.logo_basket_club_communay_ternay,
+        "SO GIVORS BASKET" to R.drawable.logo_so_givors_basket,
         "SUD LYONNAIS BASKET" to R.drawable.logo_sud_lyonnais_basket)
 
     override fun onCreate(savedInstanceState: Bundle?) {
