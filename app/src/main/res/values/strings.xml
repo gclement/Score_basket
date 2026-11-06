@@ -5,7 +5,6 @@
     <string name="team_a">Équipe A</string>
     <string name="team_b">Équipe B</string>
     <string name="period_label">Période</string>
-    <string name="score_period">Score de la période</string>
     <string name="add_one">+1</string>
     <string name="add_two">+2</string>
     <string name="reset">Réinitialiser le match</string>
@@ -17,5 +16,9 @@
     <string name="saved_matches">Matchs enregistrés</string>
     <string name="match_loaded">Match chargé</string>
     <string name="no_match">Aucun match enregistré</string>
+    <string name="score_period_hint">Score de la période — appuyez sur le score pour le corriger</string>
+    <string name="edit_score_title">Corriger la période %d</string>
+    <string name="edit_score_message">Score de %s</string>
+    <string name="team_logo">Logo de l\'équipe</string>
     
 </resources>

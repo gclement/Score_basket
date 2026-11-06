@@ -24,37 +24,67 @@
             android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/etNameA"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/team_a"
-                android:gravity="center"
-                android:hint="@string/team_a"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textColor="@color/team_a"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/etNameB"
+                <ImageView
+                    android:id="@+id/ivLogoA"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@string/team_logo"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_team_placeholder" />
+
+                <EditText
+                    android:id="@+id/etNameA"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/team_a"
+                    android:gravity="center"
+                    android:hint="@string/team_a"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/team_a"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/team_b"
-                android:gravity="center"
-                android:hint="@string/team_b"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textColor="@color/team_b"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivLogoB"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@string/team_logo"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_team_placeholder" />
+
+                <EditText
+                    android:id="@+id/etNameB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/team_b"
+                    android:gravity="center"
+                    android:hint="@string/team_b"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/team_b"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
@@ -135,6 +165,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingVertical="4dp"
             android:text="0"
             android:textColor="@color/team_a"
             android:textSize="40sp"
@@ -143,7 +177,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/score_period"
+            android:text="@string/score_period_hint"
             android:textColor="#757575"
             android:textSize="12sp" />
 
@@ -191,6 +225,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingVertical="4dp"
             android:text="0"
             android:textColor="@color/team_b"
             android:textSize="40sp"
@@ -199,7 +237,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/score_period"
+            android:text="@string/score_period_hint"
             android:textColor="#757575"
             android:textSize="12sp" />
 

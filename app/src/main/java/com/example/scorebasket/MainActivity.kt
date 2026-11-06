@@ -3,11 +3,15 @@ package com.example.scorebasket
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputFilter
+import android.text.InputType
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import java.io.File
@@ -51,8 +55,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tvTeamBLabel: TextView
     private lateinit var etNameA: EditText
     private lateinit var etNameB: EditText
+    private lateinit var ivLogoA: ImageView
+    private lateinit var ivLogoB: ImageView
     private lateinit var tvStatus: TextView
     private lateinit var llMatches: LinearLayout
+
+    private val teamLogos = mapOf(
+        "BC DES COTEAUX DU LYONNAIS" to R.drawable.logo_bc_des_coteaux_du_lyonnais,
+        "OULLINS STE FOY BASKET BALL" to R.drawable.logo_oullins_ste_foy_basket_ball,
+        "UNION SPORTIVE PIERRE BENITE" to R.drawable.logo_union_sportive_pierre_benite,
+        "ASSOCIATION SPORTIVE GREZIEU - SOUCIEU BASKET" to R.drawable.logo_association_sportive_grezieu_soucieu,
+        "FRANCHEVILLE BASKET" to R.drawable.logo_francheville_basket,
+        "SUD LYONNAIS BASKET" to R.drawable.logo_sud_lyonnais_basket)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +80,8 @@ class MainActivity : AppCompatActivity() {
         tvTeamBLabel = findViewById(R.id.tvTeamBLabel)
         etNameA = findViewById(R.id.etNameA)
         etNameB = findViewById(R.id.etNameB)
+        ivLogoA = findViewById(R.id.ivLogoA)
+        ivLogoB = findViewById(R.id.ivLogoB)
         tvStatus = findViewById(R.id.tvStatus)
         llMatches = findViewById(R.id.llMatches)
 
@@ -94,6 +110,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnA2).setOnClickListener { addScore(0, 2) }
         findViewById<Button>(R.id.btnB1).setOnClickListener { addScore(1, 1) }
         findViewById<Button>(R.id.btnB2).setOnClickListener { addScore(1, 2) }
+        tvPeriodA.setOnClickListener { editScore(0) }
+        tvPeriodB.setOnClickListener { editScore(1) }
         findViewById<Button>(R.id.btnReset).setOnClickListener { resetMatch() }
         findViewById<Button>(R.id.btnSave).setOnClickListener { saveMatch() }
         refreshMatchList()
@@ -120,6 +138,18 @@ class MainActivity : AppCompatActivity() {
     private fun updateTeamLabels() {
         tvTeamALabel.text = etNameA.text.toString().takeIf { it.isNotBlank() } ?: getString(R.string.team_a)
         tvTeamBLabel.text = etNameB.text.toString().takeIf { it.isNotBlank() } ?: getString(R.string.team_b)
+        ivLogoA.setImageResource(logoFor(etNameA.text.toString()))
+        ivLogoB.setImageResource(logoFor(etNameB.text.toString()))
+    }
+
+    private fun logoFor(name: String): Int =
+        teamLogos[baseTeamName(name)] ?: R.drawable.ic_team_placeholder
+
+    private fun baseTeamName(name: String): String {
+        var normalized = name.uppercase().trim()
+        normalized = normalized.replace(Regex("\\([^)]*\\)"), " ")
+        normalized = normalized.replace(Regex("\\s*-\\s*(\\d+|ENTENTE)\\s*$"), "")
+        return normalized.replace(Regex("\\s+"), " ").trim()
     }
 
     private fun buildPeriodButtons() {
@@ -162,6 +192,31 @@ class MainActivity : AppCompatActivity() {
             scoreB[currentPeriod] += points
         }
         refreshScores()
+    }
+
+    private fun editScore(team: Int) {
+        val input = EditText(this)
+        input.inputType = InputType.TYPE_CLASS_NUMBER
+        input.filters = arrayOf(InputFilter.LengthFilter(3))
+        val current = if (team == 0) scoreA[currentPeriod] else scoreB[currentPeriod]
+        input.setText(current.toString())
+        input.setSelection(input.text.length)
+        val teamName = if (team == 0) tvTeamALabel.text else tvTeamBLabel.text
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.edit_score_title, currentPeriod + 1))
+            .setMessage(getString(R.string.edit_score_message, teamName))
+            .setView(input)
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val value = input.text.toString().toIntOrNull() ?: 0
+                if (team == 0) {
+                    scoreA[currentPeriod] = value
+                } else {
+                    scoreB[currentPeriod] = value
+                }
+                refreshScores()
+            }
+            .setNegativeButton(android.R.string.cancel, null)
+            .show()
     }
 
     private fun resetMatch() {
